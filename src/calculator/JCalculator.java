@@ -163,7 +163,7 @@ public class JCalculator extends javax.swing.JFrame {
         });
 
         btnDiv.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDiv.setText("÷");
+        btnDiv.setText("/");
         btnDiv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDivActionPerformed(evt);
@@ -171,7 +171,7 @@ public class JCalculator extends javax.swing.JFrame {
         });
 
         btnMul.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnMul.setText("×");
+        btnMul.setText("*");
         btnMul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMulActionPerformed(evt);
@@ -356,7 +356,23 @@ public class JCalculator extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThreeActionPerformed
 
     private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
-       total2 = total1+ Double.parseDouble(txtDisplay.getText());
+        
+        switch(math_operator){
+            case '+': 
+                  total2 = total1+ Double.parseDouble(txtDisplay.getText());
+                break;
+                
+            case '-':   
+                total2 = total1 - Double.parseDouble(txtDisplay.getText());
+                break;
+            
+            case '/' :
+                total2 = total1 / Double.parseDouble(txtDisplay.getText());
+                break;
+            
+            case '*' :
+                total2 = total1 * Double.parseDouble(txtDisplay.getText());
+        }
        txtDisplay.setText(Double.toString(total2));
        total1=0;
     }//GEN-LAST:event_btnEqualsActionPerformed
@@ -372,20 +388,26 @@ public class JCalculator extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNineActionPerformed
 
     private void btnDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivActionPerformed
-        
+        String btnDivText = btnDiv.getText();
+        getOperator(btnDivText);  
     }//GEN-LAST:event_btnDivActionPerformed
 
     private void btnMulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMulActionPerformed
-    
+        String btnMulText = btnMul.getText();
+        getOperator(btnMulText);      
     }//GEN-LAST:event_btnMulActionPerformed
 
     private void btnSubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubActionPerformed
-     
+        String btnSubText = btnSub.getText();
+        getOperator(btnSubText);
     }//GEN-LAST:event_btnSubActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       total1 = total1+ Double.parseDouble(txtDisplay.getText());
-       txtDisplay.setText("");
+//       total1 = total1+ Double.parseDouble(txtDisplay.getText());
+//       txtDisplay.setText("");
+        
+        String btnAddText = btnAdd.getText();
+        getOperator(btnAddText);       
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
